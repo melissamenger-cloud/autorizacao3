@@ -1,0 +1,343 @@
+<!DOCTYPE html><html class="light" lang="pt-br" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Mural de Eventos - Colégio Suplicy</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e1e3e4",
+                    "outline-variant": "#c3c6d4",
+                    "primary-container": "#0d47a1",
+                    "surface-dim": "#d9dadb",
+                    "primary-fixed": "#d9e2ff",
+                    "secondary": "#005db7",
+                    "surface-variant": "#e1e3e4",
+                    "surface-container-high": "#e7e8e9",
+                    "on-surface-variant": "#434652",
+                    "secondary-fixed-dim": "#a9c7ff",
+                    "primary-fixed-dim": "#b0c6ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#00468c",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#b0bfc9",
+                    "on-secondary-container": "#003670",
+                    "primary": "#003178",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#2e3132",
+                    "tertiary": "#293740",
+                    "outline": "#737783",
+                    "tertiary-container": "#404e57",
+                    "tertiary-fixed": "#d6e5ef",
+                    "on-tertiary-fixed-variant": "#3b4951",
+                    "background": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "on-primary-fixed-variant": "#00429c",
+                    "secondary-container": "#64a1ff",
+                    "surface-container": "#edeeef",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#b0c6ff",
+                    "tertiary-fixed-dim": "#bac9d3",
+                    "on-primary-container": "#a1bbff",
+                    "surface-bright": "#f8f9fa",
+                    "surface-container-low": "#f3f4f5",
+                    "on-tertiary-fixed": "#0f1d25",
+                    "on-primary-fixed": "#001945",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-secondary-fixed": "#001b3d",
+                    "surface-tint": "#2b5bb5",
+                    "secondary-fixed": "#d6e3ff",
+                    "surface": "#f8f9fa"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "unit": "4px",
+                    "xl": "32px",
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "margin-desktop": "64px",
+                    "sm": "8px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Inter', sans-serif;
+            color: #191c1d;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .event-card-hover:hover {
+            box-shadow: 0 4px 12px rgba(13, 71, 161, 0.08);
+            transform: translateY(-2px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #003178;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col" style="cursor: grabbing; user-select: none;">
+<!-- TopAppBar -->
+<main class="flex-grow flex flex-col md:flex-row max-w-[1440px] mx-auto w-full px-margin-mobile md:px-margin-desktop py-lg gap-lg">
+<!-- Sidebar Navigation Drawer (Desktop only) -->
+<!-- Content Canvas -->
+<div class="flex-grow">
+<!-- Header Section -->
+<div class="mb-lg">
+<h2 class="font-headline-md text-headline-md text-primary mb-xs">Mural de Eventos</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Acompanhe as atividades e datas importantes da nossa comunidade acadêmica.</p>
+</div>
+<!-- Bento Filter Bar -->
+<div class="flex flex-wrap gap-sm mb-lg">
+<button class="bg-primary text-on-primary px-md py-sm rounded-full font-label-md text-label-md flex items-center gap-xs">
+                    Todos os Meses
+                </button>
+<button class="bg-surface-container-highest text-on-surface-variant px-md py-sm rounded-full font-label-md text-label-md hover:bg-primary-container/20 transition-all">
+                    Acadêmico
+                </button>
+<button class="bg-surface-container-highest text-on-surface-variant px-md py-sm rounded-full font-label-md text-label-md hover:bg-primary-container/20 transition-all">
+                    Feriados
+                </button>
+<button class="bg-surface-container-highest text-on-surface-variant px-md py-sm rounded-full font-label-md text-label-md hover:bg-primary-container/20 transition-all">
+                    Reuniões
+                </button>
+</div>
+<!-- Events Grid -->
+<div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-md md:gap-lg">
+<!-- Event Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex flex-col justify-between aspect-square event-card-hover transition-all group"><div class="flex justify-between items-start"><div class="flex flex-col"><span class="text-secondary font-bold text-headline-sm">15</span><span class="text-on-surface-variant font-label-sm text-label-sm uppercase">DEZ</span></div><span class="material-symbols-outlined text-secondary opacity-60 group-hover:opacity-100 transition-opacity">photo_camera</span></div><div><h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs leading-tight">Autorização de Imagem: Formatura 3º Ano</h3><div class="bg-tertiary-container/10 text-tertiary w-fit px-xs py-[2px] rounded text-[10px] font-bold uppercase tracking-wider">Administrativo</div></div><div class="mt-sm pt-sm border-t border-outline-variant flex flex-col gap-sm"><div class="flex items-center gap-sm text-primary py-xs"><span class="material-symbols-outlined text-[24px] font-bold">check_circle</span><div class="flex flex-col"><span class="text-headline-sm font-bold leading-none">142</span><span class="text-[10px] font-bold uppercase tracking-wider">assinadas</span></div></div><div class="flex items-center gap-sm text-error py-xs"><span class="material-symbols-outlined text-[24px] font-bold">pending</span><div class="flex flex-col"><span class="text-headline-sm font-bold leading-none">38</span><span class="text-[10px] font-bold uppercase tracking-wider">pendentes</span></div></div></div></div>
+<!-- Event Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex flex-col justify-between aspect-square event-card-hover transition-all group"><div class="flex justify-between items-start"><div class="flex flex-col"><span class="text-secondary font-bold text-headline-sm">22</span><span class="text-on-surface-variant font-label-sm text-label-sm uppercase">OUT</span></div><span class="material-symbols-outlined text-secondary opacity-60 group-hover:opacity-100 transition-opacity">museum</span></div><div><h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs leading-tight">Excursão Pedagógica: Museu de Ciências</h3><div class="bg-secondary/10 text-secondary w-fit px-xs py-[2px] rounded text-[10px] font-bold uppercase tracking-wider">Acadêmico</div></div><div class="mt-sm pt-sm border-t border-outline-variant flex flex-col gap-sm"><div class="flex items-center gap-sm text-primary py-xs"><span class="material-symbols-outlined text-[24px] font-bold">check_circle</span><div class="flex flex-col"><span class="text-headline-sm font-bold leading-none">165</span><span class="text-[10px] font-bold uppercase tracking-wider">assinadas</span></div></div><div class="flex items-center gap-sm text-error py-xs"><span class="material-symbols-outlined text-[24px] font-bold">pending</span><div class="flex flex-col"><span class="text-headline-sm font-bold leading-none">15</span><span class="text-[10px] font-bold uppercase tracking-wider">pendentes</span></div></div></div></div>
+<!-- Event Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex flex-col justify-between aspect-square event-card-hover transition-all group"><div class="flex justify-between items-start"><div class="flex flex-col"><span class="text-secondary font-bold text-headline-sm">05</span><span class="text-on-surface-variant font-label-sm text-label-sm uppercase">NOV</span></div><span class="material-symbols-outlined text-secondary opacity-60 group-hover:opacity-100 transition-opacity">sports_soccer</span></div><div><h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs leading-tight">Participação em Torneio Esportivo Interescolar</h3><div class="bg-secondary/10 text-secondary w-fit px-xs py-[2px] rounded text-[10px] font-bold uppercase tracking-wider">Evento</div></div><div class="mt-sm pt-sm border-t border-outline-variant flex flex-col gap-sm"><div class="flex items-center gap-sm text-primary py-xs"><span class="material-symbols-outlined text-[24px] font-bold">check_circle</span><div class="flex flex-col"><span class="text-headline-sm font-bold leading-none">84</span><span class="text-[10px] font-bold uppercase tracking-wider">assinadas</span></div></div><div class="flex items-center gap-sm text-error py-xs"><span class="material-symbols-outlined text-[24px] font-bold">pending</span><div class="flex flex-col"><span class="text-headline-sm font-bold leading-none">12</span><span class="text-[10px] font-bold uppercase tracking-wider">pendentes</span></div></div></div></div>
+<!-- Event Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex flex-col justify-between aspect-square event-card-hover transition-all group"><div class="flex justify-between items-start"><div class="flex flex-col"><span class="text-secondary font-bold text-headline-sm">10</span><span class="text-on-surface-variant font-label-sm text-label-sm uppercase">JAN</span></div><span class="material-symbols-outlined text-secondary opacity-60 group-hover:opacity-100 transition-opacity">camping</span></div><div><h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs leading-tight">Autorização para Acampamento de Férias</h3><div class="bg-primary-container/10 text-primary w-fit px-xs py-[2px] rounded text-[10px] font-bold uppercase tracking-wider">Férias</div></div><div class="mt-sm pt-sm border-t border-outline-variant flex flex-col gap-sm"><div class="flex items-center gap-sm text-primary py-xs"><span class="material-symbols-outlined text-[24px] font-bold">check_circle</span><div class="flex flex-col"><span class="text-headline-sm font-bold leading-none">210</span><span class="text-[10px] font-bold uppercase tracking-wider">assinadas</span></div></div><div class="flex items-center gap-sm text-error py-xs"><span class="material-symbols-outlined text-[24px] font-bold">pending</span><div class="flex flex-col"><span class="text-headline-sm font-bold leading-none">45</span><span class="text-[10px] font-bold uppercase tracking-wider">pendentes</span></div></div></div></div>
+<!-- Event Card 5 -->
+
+<!-- Event Card 6 -->
+
+<!-- Event Card 7 -->
+
+<!-- Event Card 8 -->
+
+<!-- Event Card 9 -->
+
+<!-- Event Card 10 -->
+
+<!-- Event Card 11 (Empty state / Call to action) -->
+<div class="bg-primary border-2 border-dashed border-primary-fixed-dim rounded-lg p-md flex flex-col items-center justify-center aspect-square text-center gap-sm group cursor-pointer hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined text-primary-fixed text-display-lg group-hover:scale-110 transition-transform">add_circle</span>
+<span class="text-primary-fixed font-label-md text-label-md">Sugerir Evento</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-lg py-xl max-w-[1440px] mx-auto gap-md">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-headline-sm text-headline-sm text-primary">Colégio Suplicy</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 Colégio Suplicy - ACLM Brand. ECA Compliant.</p>
+</div>
+<div class="flex gap-lg font-label-sm text-label-sm">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Contact Support</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+<!-- Mobile Navigation Bar -->
+<div class="fixed bottom-16 left-0 right-0 md:bottom-0 md:left-auto md:right-margin-desktop md:mb-lg px-margin-mobile md:px-0 z-40 mb-4" style="bottom: calc(40px + 4rem);">
+<div class="max-w-[1440px] mx-auto flex justify-end">
+<button class="w-full md:w-fit bg-primary text-on-primary px-xl py-md rounded-full font-headline-sm text-headline-sm shadow-lg hover:bg-primary-container transition-all flex items-center justify-center gap-md group">
+<span class="">Continuar</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div><nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface border-t border-outline-variant flex justify-around py-sm z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">calendar_month</span>
+<span class="text-[10px] font-bold">Eventos</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">draw</span>
+<span class="text-[10px] font-medium">Assinar</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">history</span>
+<span class="text-[10px] font-medium">Histórico</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Perfil</span>
+</button>
+</nav>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = [...document.querySelectorAll('.event-card-hover')];
+            const filterBar = document.querySelector('.flex.flex-wrap.gap-sm');
+            const filterButtons = filterBar ? [...filterBar.querySelectorAll('button')] : [];
+            const suggestButton = [...document.querySelectorAll('div.cursor-pointer')]
+                .find(element => element.innerText.includes('Sugerir Evento'));
+            const continueButton = [...document.querySelectorAll('button')]
+                .find(button => button.innerText.includes('Continuar'));
+            const mobileButtons = [...document.querySelectorAll('nav button')];
+
+            function showMessage(message) {
+                alert(message);
+            }
+
+            function filterEvents(selectedFilter) {
+                cards.forEach(card => {
+                    const category = card.querySelector('[class*="uppercase"]')?.innerText.trim().toLowerCase() || '';
+                    const shouldShow = selectedFilter === 'todos os meses' || category.includes(selectedFilter);
+                    card.style.display = shouldShow ? '' : 'none';
+                });
+
+                filterButtons.forEach(button => {
+                    const isActive = button.innerText.trim().toLowerCase() === selectedFilter;
+                    button.classList.toggle('bg-primary', isActive);
+                    button.classList.toggle('text-on-primary', isActive);
+                    button.classList.toggle('bg-surface-container-highest', !isActive);
+                    button.classList.toggle('text-on-surface-variant', !isActive);
+                });
+            }
+
+            cards.forEach(card => {
+                card.setAttribute('role', 'button');
+                card.setAttribute('tabindex', '0');
+                const openDetails = () => {
+                    const title = card.querySelector('h3')?.innerText.trim() || 'Evento';
+                    showMessage(`Detalhes do evento: ${title}.\n\nEm breve, as informações completas estarão disponíveis.`);
+                };
+                card.addEventListener('click', openDetails);
+                card.addEventListener('keydown', event => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        openDetails();
+                    }
+                });
+            });
+
+            filterButtons.forEach(button => {
+                button.setAttribute('type', 'button');
+                button.addEventListener('click', () => filterEvents(button.innerText.trim().toLowerCase()));
+            });
+
+            if (filterBar) {
+                filterBar.addEventListener('wheel', event => {
+                    if (filterBar.scrollWidth > filterBar.clientWidth) {
+                        event.preventDefault();
+                        filterBar.scrollLeft += event.deltaY;
+                    }
+                }, { passive: false });
+            }
+
+            if (suggestButton) {
+                suggestButton.setAttribute('role', 'button');
+                suggestButton.setAttribute('tabindex', '0');
+                const suggestEvent = () => {
+                    const eventName = prompt('Digite o nome do evento que deseja sugerir:');
+                    if (eventName?.trim()) {
+                        showMessage(`Sua sugestão “${eventName.trim()}” foi registrada com sucesso.`);
+                    }
+                };
+                suggestButton.addEventListener('click', suggestEvent);
+                suggestButton.addEventListener('keydown', event => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        suggestEvent();
+                    }
+                });
+            }
+
+            if (continueButton) {
+                continueButton.setAttribute('type', 'button');
+                continueButton.addEventListener('click', () => {
+                    const firstVisibleCard = cards.find(card => card.style.display !== 'none');
+                    if (firstVisibleCard) {
+                        firstVisibleCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        firstVisibleCard.focus();
+                    } else {
+                        showMessage('Nenhum evento encontrado para este filtro.');
+                    }
+                });
+            }
+
+            mobileButtons.forEach(button => {
+                button.setAttribute('type', 'button');
+                button.addEventListener('click', () => {
+                    const section = button.innerText.trim();
+                    if (section === 'Eventos') {
+                        document.querySelector('main')?.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        showMessage(`A seção “${section}” estará disponível em breve.`);
+                    }
+                });
+            });
+
+            document.querySelectorAll('footer a').forEach(link => {
+                link.addEventListener('click', event => {
+                    event.preventDefault();
+                    showMessage(`${link.innerText.trim()} estará disponível em breve.`);
+                });
+            });
+        });
+    </script>
+
+
+
+
+</body></html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html><html class="light" lang="pt-BR" style><head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Assinatura Digital - ACLM</title>
+
+    <!-- outros links e estilos do seu projeto -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+
+    <script
+      src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"><link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&amp;display=swap"
+      rel="stylesheet" class>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet">
+    <!-- Theme Configuration -->
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e1e3e4",
+                    "outline-variant": "#c3c6d4",
+                    "primary-container": "#0d47a1",
+                    "surface-dim": "#d9dadb",
+                    "primary-fixed": "#d9e2ff",
+                    "secondary": "#005db7",
+                    "surface-variant": "#e1e3e4",
+                    "surface-container-high": "#e7e8e9",
+                    "on-surface-variant": "#434652",
+                    "secondary-fixed-dim": "#a9c7ff",
+                    "primary-fixed-dim": "#b0c6ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#00468c",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#b0bfc9",
+                    "on-secondary-container": "#003670",
+                    "primary": "#003178",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#2e3132",
+                    "tertiary": "#293740",
+                    "outline": "#737783",
+                    "tertiary-container": "#404e57",
+                    "tertiary-fixed": "#d6e5ef",
+                    "on-tertiary-fixed-variant": "#3b4951",
+                    "background": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "on-primary-fixed-variant": "#00429c",
+                    "secondary-container": "#64a1ff",
+                    "surface-container": "#edeeef",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#b0c6ff",
+                    "tertiary-fixed-dim": "#bac9d3",
+                    "on-primary-container": "#a1bbff",
+                    "surface-bright": "#f8f9fa",
+                    "surface-container-low": "#f3f4f5",
+                    "on-tertiary-fixed": "#0f1d25",
+                    "on-primary-fixed": "#001945",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-secondary-fixed": "#001b3d",
+                    "surface-tint": "#2b5bb5",
+                    "secondary-fixed": "#d6e3ff",
+                    "surface": "#f8f9fa"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "unit": "4px",
+                    "xl": "32px",
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "margin-desktop": "64px",
+                    "sm": "8px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .signature-canvas {
+            cursor: crosshair;
+            touch-action: none;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <!-- TopAppBar Navigation (Task-Focused - No Main Nav Shell) -->
+    <header
+      class="w-full top-0 sticky bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline z-50"><div
+        class="max-w-4xl mx-auto w-full flex flex-col items-center justify-center py-md relative"><div
+          class="absolute left-lg top-1/2 -translate-y-1/2 flex flex-row items-center gap-sm">
+          <img src="https://lh3.googleusercontent.com/aida/AP1WRLst<span class="
+            font-headline-sm text-headline-sm text-primary font-bold
+            tracking-tight uppercase">ASSINA MAIS</span></div>
+      <div class="flex items-center gap-xs mb-xs">
+        <span
+          class="material-symbols-outlined text-primary">verified_user</span>
+        <span
+          class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Portal
+          do Responsável</span>
+      </div>
+      <div class="flex items-center gap-md">
+        <h1
+          class="font-headline-lg text-headline-lg text-primary text-center tracking-tight">Assinatura
+          de Autorização</h1>
+        <div
+          class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+          <span class="material-symbols-outlined text-on-primary">draw</span>
+        </div>
+      </div>
+    </div></header>
+  <!-- Main Content Canvas -->
+  <main
+    class="flex-grow flex flex-col items-center justify-center p-lg md:p-xl max-w-4xl mx-auto w-full">
+    <!-- Header Info -->
+    <div class="w-full mb-lg text-center">
+
+      <h2
+        class="font-headline-md text-headline-md text-on-surface mb-xs tracking-tight">Autorização
+        de Evento: Excursão Museu</h2>
+    </div><div class="flex justify-center gap-lg mb-xl">
+      <a
+        href="./autorizacao-evento.pdf"
+        download="autorizacao-evento.pdf"
+        class="flex flex-col items-center justify-center gap-md p-xl bg-primary text-on-primary rounded-xl shadow-sm hover:bg-primary-container hover:text-on-primary-container transition-colors w-64 h-80">
+
+        <span class="material-symbols-outlined text-[48px]">download</span>
+
+        <span
+          class="font-label-md text-label-md font-bold uppercase tracking-widest text-center">
+          Baixar Autorização
+        </span>
+      </a>
+
+     <button
+    type="button"
+    id="btn-enviar-assinado"
+    class="flex flex-col items-center justify-center gap-md p-xl border-2 border-dashed border-primary text-primary rounded-xl hover:bg-primary-fixed transition-colors w-64 h-80">
+    <span class="material-symbols-outlined text-[48px]">forward_to_inbox</span>
+    <span class="font-label-md text-label-md font-bold uppercase tracking-widest text-center">
+        Enviar documento assinado
+    </span>
+</button>
+
+    </div>
+    <!-- Signature Pad Container (Bento-style focused card) -->
+    <!-- Action Button -->
+    <div
+      class="w-full mt-lg flex flex-col items-center justify-center gap-md mt-xl gap-lg">
+
+      <p class="font-body-sm text-body-sm text-on-surface-variant text-center">
+        Ao clicar em confirmar, você emite uma assinatura digital juridicamente
+        vinculativa.
+      </p>
+    </div>
+  </main>
+  <!-- Footer -->
+  <footer
+    class="w-full mt-auto bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant">
+    <div
+      class="flex flex-col md:flex-row justify-between items-center px-lg py-xl max-w-margin-desktop mx-auto gap-md">
+      <div class="flex flex-col items-center md:items-start gap-xs">
+
+        <p class="font-body-sm text-body-sm text-on-surface-variant">© 2024
+          Colégio Suplicy - ACLM Brand. ECA Compliant.</p>
+      </div>
+      <div class="flex gap-lg">
+        <a
+          class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors underline-offset-4"
+          href="#">Privacy Policy</a>
+        <a
+          class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors underline-offset-4"
+          href="#">Contact Support</a>
+        <a
+          class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors underline-offset-4"
+          href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const actionButtons = [...document.querySelectorAll('main button')];
+        const footerLinks = [...document.querySelectorAll('footer a')];
+
+        const showMessage = message => window.alert(message);
+
+        actionButtons.forEach(button => {
+            button.type = 'button';
+            button.addEventListener('click', () => {
+                const label = button.innerText.trim();
+
+                if (label.includes('gov.br')) {
+                    showMessage('A autenticação pelo gov.br será iniciada em breve.');
+                    return;
+                }
+
+                if (label.includes('Enviar documento assinado')) {
+                    const input = document.createElement('input');
+                    input.type = 'file';
+                    input.accept = '.pdf,.png,.jpg,.jpeg';
+                    input.addEventListener('change', () => {
+                        const file = input.files?.[0];
+                        if (file) {
+                            showMessage(`Arquivo “${file.name}” selecionado com sucesso.`);
+                        }
+                    });
+                    input.click();
+                }
+            });
+        });
+
+        footerLinks.forEach(link => {
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                showMessage(`${link.innerText.trim()} estará disponível em breve.`);
+            });
+        });
+    });
+<script>
+    const btnEnviarAssinado = document.getElementById('btn-enviar-assinado');
+
+    if (btnEnviarAssinado) {
+        btnEnviarAssinado.addEventListener('click', () => {
+            const seletorArquivo = document.createElement('input');
+            seletorArquivo.type = 'file';
+            seletorArquivo.accept = '.pdf,application/pdf';
+
+            seletorArquivo.addEventListener('change', () => {
+                const arquivo = seletorArquivo.files[0];
+
+                if (!arquivo) {
+                    alert('Nenhum arquivo foi selecionado.');
+                    return;
+                }
+
+                const foiAssinado = window.confirm(
+                    `O arquivo “${arquivo.name}” foi assinado pelo gov.br?\n\n` +
+                    `Clique em OK para confirmar ou em Cancelar para informar que não foi assinado.`
+                );
+
+                if (foiAssinado) {
+                    window.alert(
+                        `Documento confirmado como assinado pelo gov.br.\nArquivo: ${arquivo.name}`
+                    );
+                } else {
+                    window.alert(
+                        `O documento não foi confirmado como assinado pelo gov.br.\nArquivo: ${arquivo.name}`
+                    );
+                }
+            });
+
+            seletorArquivo.click();
+        });
+    } else {
+        console.error('O botão #btn-enviar-assinado não foi encontrado.');
+    }
+</script>
+
+
+        seletorArquivo.click();
+    });
+</script>
+    </main>
+
+    <script>
+        const btnEnviarAssinado = document.getElementById('btn-enviar-assinado');
+
+        btnEnviarAssinado.addEventListener('click', () => {
+            const seletorPdf = document.createElement('input');
+            seletorPdf.type = 'file';
+            seletorPdf.accept = 'application/pdf,.pdf';
+
+            seletorPdf.addEventListener('change', async () => {
+                const arquivo = seletorPdf.files[0];
+                if (!arquivo) return;
+
+                try {
+                    const bytes = new Uint8Array(await arquivo.arrayBuffer());
+                    const textoPdf = new TextDecoder('latin1').decode(bytes);
+
+                    const temAssinatura = /\/Sig\b/i.test(textoPdf);
+                    const temByteRange = /\/ByteRange\s*\[/i.test(textoPdf);
+                    const temConteudoAssinado = /\/Contents\s*<[^>]+>/i.test(textoPdf);
+                    const temIndicioGov = /gov\.br|ICP-Brasil|certificado digital|assinatura digital/i.test(textoPdf);
+
+                    const possuiIndicios = temAssinatura && temByteRange && temConteudoAssinado;
+
+                    if (possuiIndicios && temIndicioGov) {
+                        alert('O PDF possui indícios de assinatura digital e referências ao gov.br ou ICP-Brasil.\n\nEsta é uma checagem preliminar.');
+                    } else if (possuiIndicios) {
+                        alert('O PDF possui indícios de assinatura digital, mas não foi encontrada referência ao gov.br.');
+                    } else {
+                        alert('Não foram encontrados indícios de assinatura digital neste PDF.');
+                    }
+                } catch (erro) {
+                    console.error(erro);
+                    alert('Não foi possível analisar o arquivo PDF.');
+                }
+            });
+
+            seletorPdf.click();
+        });
+    </script>
+
+</body>
+</html>
